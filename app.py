@@ -17,7 +17,7 @@ def predict():
     if request.method == 'POST':
         image_data = re.sub('^data:image/.+;base64,', '', request.json)
         pil_image = Image.open(BytesIO(base64.b64decode(image_data))).convert('RGB')
-        label_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+        label_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck','person']
         label_names.sort()
         net = cv2.dnn.readNetFromONNX('cifar_classifier.onnx')
         img = cv2.resize(np.array(pil_image),(32,32))
